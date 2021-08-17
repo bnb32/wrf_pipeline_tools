@@ -1,0 +1,49 @@
+
+
+# set DEFAULT_COMPILE = 'f90 -c -r8'
+# set DEFAULT_COMPILE = 'f90 -c'
+# set DEFAULT_COMPILE = '/opt/intel/fce/9.0/bin/ifort -c -g'
+#  set DEFAULT_COMPILE = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/mpi/ifort -c'
+  set DEFAULT_COMPILE = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/ifort -c -g'
+
+#  set LINK_OPTS       = '-L/usr/local/lib -lnetcdf'
+  set LINK_OPTS       = '-lnetcdf'
+
+# set FINAL_COMMAND   = 'f90 *.o -o $1.exe $LINK_OPTS'
+# set FINAL_COMMAND   = '/opt/intel/fce/9.0/bin/ifort *.o -o $1.exe $LINK_OPTS'
+#  set FINAL_COMMAND   = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/mpi/ifort *.o -o $1.exe $LINK_OPTS'
+  set FINAL_COMMAND   = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/ifort *.o -o $1.exe $LINK_OPTS'
+
+#LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+# set ANAL_PATH = /jjs/tstorms_wehner/source/tstorms
+# set ANAL_PATH = /d/visusers/romano/src/tstorms_wehner/source/tstorms
+  set ANAL_PATH = /glade/u/home/bbenton/RUNWORKFLOW/tstorms/source/tstorms
+#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+# --- tropical storm analysis 
+ set TSTORMS_DRIVE  =  $ANAL_PATH/tstorms_drive.f90
+# set TSTORMS        =  $ANAL_PATH/tstorms_orig.f90  # original code
+ set TSTORMS        =  $ANAL_PATH/tstorms.f90	     # modified to output column indicating
+						     # whether thickness criteria was met
+ set INDATA         =  $ANAL_PATH/indata.f90
+ set SPLINE         =  $ANAL_PATH/spline.f90
+ set TSGPAD         =  $ANAL_PATH/tsgpad.f90
+ set ZTOOLS         =  $ANAL_PATH/ztools.f90
+
+# --- auxillary modules
+ set GET_DATE       =  $ANAL_PATH/aux/get_date.f90
+ set UTILITIES      =  $ANAL_PATH/aux/utilities.f90
+ set TIME_MANAGER   =  $ANAL_PATH/aux/time_manager.f90
+
+# --- netcdf modules
+ set NCATT         = $ANAL_PATH/netcdf/ncatt.f90
+ set NCAXIS        = $ANAL_PATH/netcdf/ncaxis.f90
+ set NCD_DEFINE    = $ANAL_PATH/netcdf/ncd_define.f90
+ set NCDATA        = $ANAL_PATH/netcdf/ncdata.f90
+ set NCFILE        = $ANAL_PATH/netcdf/ncfile.f90
+ set NCFILE_ACCESS = $ANAL_PATH/netcdf/ncfile_access.f90
+ set NCREAD_WRITE  = $ANAL_PATH/netcdf/ncread_write.f90
+ set NCVAR         = $ANAL_PATH/netcdf/ncvar.f90
+ set NCVARMAP      = $ANAL_PATH/netcdf/ncvarmap.f90
+ set NETCDF_DRIVER = $ANAL_PATH/netcdf/netcdf_driver.f90
+ set NETCDF_FILE   = $ANAL_PATH/netcdf/netcdf_file.f90

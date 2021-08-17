@@ -1,0 +1,146 @@
+%\begin{filecontents*}{example.eps}
+%%!PS-Adobe-3.0 EPSF-3.0
+%%%BoundingBox: 19 19 221 221
+%%%CreationDate: Mon Sep 29 1997
+%%%Creator: programmed by hand (JK)
+%%%EndComments
+%gsave
+%newpath
+%  20 20 moveto
+%  20 220 lineto
+%  220 220 lineto
+%  220 20 lineto
+%closepath
+%2 setlinewidth
+%gsave
+%  .4 setgray fill
+%grestore
+%stroke
+%grestore
+%\end{filecontents*}
+%
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\documentclass{article}
+%\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{afterpage}
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+%\journalname{Climate Dynamics}
+%
+\begin{document}
+
+\title{Assessing hurricane climatology using dynamical downscaling of last millennium global climate simulations}
+
+%\thanks{Grants or other notes
+%about the article that should go on the front page should be
+%placed here. General acknowledgments should be placed at the end of the article.}
+
+%\subtitle{Do you have a subtitle?\\ If so, write it here}
+
+%\titlerunning{Assessing Hurricane climatology}        % if too long for running head
+
+\author{Benton, Brandon N. \and Ault, Toby R.}
+\maketitle
+
+%\authorrunning{Short form of author list} % if too long for running head
+
+%\institute{Benton, Brandon N. \at Cornell University \\
+%              \email{bnb32@cornell.edu} \and
+%           Ault, Toby R. \at Cornell University \\
+%              \email{tobyault@gmail.com}
+%}
+
+%\date{Received: date / Accepted: date}
+% The correct dates will be entered by the editor
+
+
+%\maketitle
+
+\begin{abstract}
+%\keywords{Hurricanes \and downscaling \and climatology}
+% \PACS{PACS code1 \and PACS code2 \and more}
+% \subclass{MSC code1 \and MSC code2 \and more}
+\end{abstract}
+
+\section{Introduction}
+\label{intro}
+\par
+Recent decades have seen widespread and catastrophic damage caused by tropical cyclones. In fact, tropical cyclones caused $42\%$ of the United States catastrophe-insured losses in the period $1992-2011$ \cite{tc_reanal:1}, and Hurricane Katrina resulted in a death toll of $1833$ people with a financial loss of over $\$125$ billion \cite{tc_reanal:1}. The disruption from these extreme weather events will only increase with rising coastal populations and increasing value of infrastructure in coastal areas \cite{kerry_tc_clim}. It is expected that hurricane statistics will change in response to projected changes in climate in significant ways, and understanding these changes is essential in order to safeguard against future destruction. 
+\par
+Because of various limitations in historical records there is considerable uncertainty regarding projections of future hurricane statistics. Historical records are not extensive enough to support trend analysis, are susceptible to biases due to changes in detection instrumentation, and are limited by lack of aerial observation capability in the past \cite{kerry_clivar}. On the other hand, analysing historical records is but one approach to acquiring an understanding of the relationship between hurricane statistics and climate change. Modelling the response of hurricane behavior to climate changes using global circulation models (GCMs) has been explored extensively. However, much of this modelling effort has focused primarily on capturing accurate climate conditions that are used as boundary conditions in regional climate models (RCMs) to assess hurricane statistics \cite{kerry_clivar}. The limitation of this approach is the difficulty of separating natural variability from forced responses. A precise understanding of the connection between projected changes in the climate and hurricane statistics thus remains elusive. 
+\par
+In this work we employ both a control and forced GCM simulation to overcome the limits of relying on historical records and to separate natural variability from forced behavior. Both the forced and control simulations are dynamically downscaled using the Weather Research and Forecasting model (WRF) and tropical cyclones (TCs) are detected in the downscaled results using the GFDL TC tracking algorithm (TSTORMS). A suite of diagnostics are used to assess the spatial and temporal hurricane statistics and extract climatological trends. ERA-Interim (ERAI) reanalysis data is also downscaled and compared to International Best Track Archive for Climate Stewardship (IBTrACS) data to assess accuracy in WRF downscaling and set an uncertainty baseline.  
+\par
+This paper is organized as follows. We start with a brief summary of the models and methods used, in section \ref{methods}. This section covers both the GCM simulations and WRF downscaling, in addition to the suite of diagnostics employed in our analysis. Here we also discuss the ERAI and IBTrACS data sets, used to validate our methodology, as well as the TSTORMS tracking algorithm used to analyse WRF output. We present our results in section \ref{results} and summarize our conclusions, along with possible directions for future work in section \ref{discuss}.     
+
+\section{Models and Methods}
+\label{methods}
+\subsection{GCMs}
+In this work we use two simulations from the NCAR Last Millennium Ensemble (LME) runs, described in \cite{gcm_lme}. The two selected LME runs consist of a control and a forced run, allowing us to assess internal variability as well as the effect of various forcings on hurricane statistics. Both of these simulations were run from 850 to 2005 CE using the Community Earth System Model (CESM) version 1.1, with the Community Atmosphere Model (CAM) version 5. The resolution of the atmosphere and land grids are $\sim2^\circ$ and $\sim1^\circ$ for ocean and sea ice grids. All LME runs were spun up for 200 years under control conditions prior to 850 CE. In the following the selected runs will be referred to as LMEC (control) and LMEF (forced). LMEF was forced with the transient evolution of solar intensity, volcanic emissions, greenhouse gases, aerosols, land-use conditions, and orbital parameters. The forcings used in LMEF were climate forcing reconstructions from phase 5 of the Coupled Intermodel Comarison Project (CMIP5) \cite{gmd-4-33-2011}. LMEC was run absent of any of these forcings thus providing a baseline for understanding the background of natural climate variability. 
+
+\subsection{WRF}
+\label{WRF}
+We used WRFV3.9 for the dynamical downscaling with the following physics schemes: WSM6 for micro-physics \cite{mp_phys}, YSU for PBL \cite{pbl_phys}, Kain-Fritsch for convection \cite{cu_phys}, RRTMG for long-wave and short-wave radiation \cite{rad_phys}, Noah for land surface \cite{sfc_phys}, MM5 for surface layer (\cite{sfclay_phys:1},\cite{sfclay_phys:2},\cite{sfclay_phys:3}), and simple mixed-layer for ocean \cite{ocn_phys}. To convert GCM data to use as boundary data for WRF we employed the conversion routine described in \cite{tech_notes}. Although the main focus of this work is hurricane statistics in the Atlantic basin, we use a WRF domain extending from $130W$ to $15E$ and from the equator to $55N$. The reasoning behind this large domain is to generate a general use data product which can also be used in future work on drought studies in North America. The resolution used in the WRF downscaling was $30km$.    
+
+
+\subsection{TSTORMS}
+\label{tstorms}
+The TC tracking routine developed by GFDL, called TSTORMS, was used to analyse the results of downscaling \cite{tc_algo}. This routine uses minimum pressure and maximum vorticity criteria to select candidate cyclones. The cyclones are then stored as storms if they satisfy the following conditions for $ndays$: (1) That the maximum vorticity location is within a threshold radius, $r_{crit}$, of the minimum pressure location, (2) that the core temperature of the cyclone is higher than outside of the core by a threshold difference, $twc_{crit}$, and (3) the difference in distance between pressure levels at $200hPa$ and $1000hPa$ outside and inside the core exceeds a threshold value, $thick_{crit}$. As described in \cite{kerry_clivar} and \cite{tc_algo}, tracking results are sensitive the particular tracking scheme and threshold values used. However, the latter is responsible for the main difference in tracking scheme results \cite{tc_track}. Regarding sensitivity to threshold values, we conducted a limited parameter sweep to determine optimal threshold values. We calculated percentage difference between ERAI downscaled output and IBTrACS data, for each set of parameters, using the diagnostics described in section \ref{diags}. We used the set of parameters which achieved the minimum percentage difference of $14.5\%$. This parameter set was $r_{crit} = 1.3^{\circ}$, $twc_{crit} = 1.25^{\circ}C$, $thick_{crit} = 50m$, and $ndays = 2$.  
+
+\subsection{ERAI and IBTrACS}
+\label{erai}
+We used ERAI and IBTrACS to construct a baseline accuracy and calibration for the downscaling and storm tracking pipeline. ERAI uses four-dimensional variational data assimilation (4DVAR), presenting a significant advantage over reanalysis products using 3DVAR. This improves asynoptic data handling and allows for the influence of an observation to be more strongly controlled by model dynamics \cite{tc_reanal:2}. This data assimilation method is coupled with the ECMWF Integrated Forecast Model (IFS) to extrapolate fields between observations. A detailed description of IBTrACS is provided in \cite{ibtracs} and ERAI is comprehensively discussed in \cite{erai_reanal}. In our work $6$-hourly ERAI data was downscaled in WRF and compared to IBTrACS for the same arbitrarily selected time period ($1995-2005$). The comparison was made using the suite of diagnostics described in \ref{diags}. In \cite{tc_reanal:1} an extensive study was performed of how well TCs are represented in reanalysis products. This work made use of two track matching approaches, referred to as "direct matching" and "objective matching", along with several diagnostics similar to the ones we selected, in order to compare reanalysis TC tracks to those found in IBTrACS. The objective matching approach, which employs a tracking algorithm similar to TSTORMS, found agreement of $~60\%$ with ERAI in the Northern Hemisphere. With a quick rudimentary implementation of our own track matching algorithm we saw similar agreement. We also saw close agreement comparing results produced by other diagnostics, similar to those described in \ref{diags}. The physics schemes in section \ref{WRF} and threshold values in section \ref{tstorms} were used in response to a self-selected $15\%$ difference threshold imposed between ERAI and IBTrACS, as quantified by our diagnostics suite.      
+
+\subsection{Diagnostics}
+\label{diags}
+We constructed a suite of diagnostics to analyse cyclone tracking data from TSTORMS. These diagnostics consist of storm number vs (1) month, (2) year, (3) latitude, (4) longitude, (5) maximum wind speed, (6) minimum pressure, (7) decay time from maximum wind speed, and (8) decay time from minimum pressure. Additionally, we calculated percentage of storms within (9) May to November, (10) $0-25N$ latitude, (11) $100W-50W$ longitude, (12) $1020hPa-950hPa$ pressure, (13) $0m/s-40m/s$ maximum wind speed, (14) $0-100hrs$ decay time from maximum wind speed, and (14) $0-100hrs$ decay time from minimum pressure. Mean values of the storm number diagnostics and percentage values were used to calculate percentage differences and these differences were averaged over all diagnostics for a composite percentage difference. When used initially to assess our methodology these percentage differences were calculated for ERAI vs. IBTrACS, as described in sections \ref{tstorms} and \ref{erai}. These diagnostics were selected in order to assess hurricane behavior across a large state space. The diagnostics quantify hurricane behavior across the temporal and spatial domain, and also assess more fundamental physical characteristics. In addition, the diagnostics can be used with limited data consisting only of time, location, wind speed, and pressure. This presents a versatile and efficient approach to capture both mean climatology and more fine structured hurricane behavior.       
+
+\section{Results}
+\label{results}
+
+\subsection{Average Effect of Eruptions}
+
+\subsection{Effect of Strongest Eruptions}
+
+\subsection{ERAI vs IBTrACS}
+
+\subsection{LMEC vs ERAI}
+
+\subsection{LEMF vs ERAI}
+
+\subsection{LMEC vs LMEF}
+
+\section{Discussion}
+\label{discuss}
+
+%\begin{acknowledgements}
+%If you'd like to thank anyone, place your comments here
+%and remove the percent signs.
+%\end{acknowledgements}
+
+% BibTeX users please use one of
+%\bibliographystyle{spbasic}      % basic style, author-year citations
+\bibliographystyle{spmpsci}      % mathematics and physical sciences
+%\bibliographystyle{spphys}       % APS-like style for physics
+\bibliography{hurrclim.bib}   % name your BibTeX data base
+
+\end{document}
+

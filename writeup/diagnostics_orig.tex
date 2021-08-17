@@ -1,0 +1,637 @@
+%
+% This is a general template file for the LaTeX package SVJour3
+% for Springer journals.          Springer Heidelberg 2010/09/16
+%
+% Copy it to a new file with a new name and use it as the basis
+% for your article. Delete % signs as needed.
+%
+% This template includes a few options for different layouts and
+% content for various journals. Please consult a previous issue of
+% your journal as needed.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% First comes an example EPS file -- just ignore it and
+% proceed on the \documentclass line
+% your LaTeX will extract the file if required
+%\begin{filecontents*}{example.eps}
+%%!PS-Adobe-3.0 EPSF-3.0
+%%%BoundingBox: 19 19 221 221
+%%%CreationDate: Mon Sep 29 1997
+%%%Creator: programmed by hand (JK)
+%%%EndComments
+%gsave
+%newpath
+%  20 20 moveto
+%  20 220 lineto
+%  220 220 lineto
+%  220 20 lineto
+%closepath
+%2 setlinewidth
+%gsave
+%  .4 setgray fill
+%grestore
+%stroke
+%grestore
+%\end{filecontents*}
+%
+\RequirePackage{fix-cm}
+%
+%\documentclass{svjour3}                     % onecolumn (standard format)
+%\documentclass[smallcondensed]{svjour3}     % onecolumn (ditto)
+%\documentclass[smallextended]{svjour3}       % onecolumn (second format)
+%\documentclass[twocolumn]{svjour3}          % twocolumn
+%
+\documentclass{article}
+
+%\smartqed  % flush right qed marks, e.g. at end of proof
+%
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{afterpage}
+%
+% \usepackage{mathptmx}      % use Times fonts if available on your TeX system
+%
+% insert here the call for the packages your document requires
+%\usepackage{latexsym}
+% etc.
+%
+% please place your own definitions here and don't use \def but
+% \newcommand{}{}
+%
+% Insert the name of "your journal" with
+%\journalname{Climate Dynamics}
+
+\begin{document}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/erai_1995_2005_diags.pdf}
+\caption{ERAI diags 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ibtracs_1995_2005_diags.pdf}
+\caption{IBTrACS diags 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/erai_1995_2005_tracks.pdf}
+\caption{ERAI tracks 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ibtracs_1995_2005_tracks.pdf}
+\caption{IBTrACS tracks 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ibtracs_1995_2005_diags.pdf}
+\caption{IBTrACS diags 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ctrl_1995_2005_diags.pdf}
+\caption{LME-ctrl diags 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ibtracs_1995_2005_tracks.pdf}
+\caption{IBTrACS tracks 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ctrl_1995_2005_tracks.pdf}
+\caption{LME-ctrl tracks 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/erai_1995_2005_diags.pdf}
+\caption{ERAI diags 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ctrl_1995_2005_diags.pdf}
+\caption{LME-ctrl diags 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/erai_1995_2005_tracks.pdf}
+\caption{ERAI tracks 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ctrl_1995_2005_tracks.pdf}
+\caption{LME-ctrl tracks 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/forced_1995_2005_diags.pdf}
+\caption{LME-forced diags 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ctrl_1995_2005_diags.pdf}
+\caption{LME-ctrl diags 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/forced_1995_2005_tracks.pdf}
+\caption{LME-forced tracks 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ctrl_1995_2005_tracks.pdf}
+\caption{LME-ctrl tracks 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/forced_1995_2005_diags.pdf}
+\caption{LME-forced diags 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/erai_1995_2005_diags.pdf}
+\caption{ERAI diags 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/forced_1995_2005_tracks.pdf}
+\caption{LME-forced tracks 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/erai_1995_2005_tracks.pdf}
+\caption{ERAI tracks 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/forced_1995_2005_diags.pdf}
+\caption{LME-forced diags 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ibtracs_1995_2005_diags.pdf}
+\caption{IBTrACS diags 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/forced_1995_2005_tracks.pdf}
+\caption{LME-forced tracks 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{./figures/ibtracs_1995_2005_tracks.pdf}
+\caption{IBTrACS tracks 1995-2005}
+\end{minipage}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_0_diags.pdf}
+\caption{erai diags-0 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_0_tracks.pdf}
+\caption{erai tracks-0 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_1_diags.pdf}
+\caption{erai diags-1 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_1_tracks.pdf}
+\caption{erai tracks-1 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_2_diags.pdf}
+\caption{erai diags-2 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_2_tracks.pdf}
+\caption{erai tracks-2 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_3_diags.pdf}
+\caption{erai diags-3 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_3_tracks.pdf}
+\caption{erai tracks-3 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_4_diags.pdf}
+\caption{erai diags-4 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_4_tracks.pdf}
+\caption{erai tracks-4 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_5_diags.pdf}
+\caption{erai diags-5 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_5_tracks.pdf}
+\caption{erai tracks-5 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_6_diags.pdf}
+\caption{erai diags-6 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_6_tracks.pdf}
+\caption{erai tracks-6 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_7_diags.pdf}
+\caption{erai diags-7 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_7_tracks.pdf}
+\caption{erai tracks-7 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_8_diags.pdf}
+\caption{erai diags-8 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_8_tracks.pdf}
+\caption{erai tracks-8 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_9_diags.pdf}
+\caption{erai diags-9 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_9_tracks.pdf}
+\caption{erai tracks-9 1995-2005}
+\end{minipage}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_10_diags.pdf}
+\caption{erai diags-10 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_10_tracks.pdf}
+\caption{erai tracks-10 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_11_diags.pdf}
+\caption{erai diags-11 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_11_tracks.pdf}
+\caption{erai tracks-11 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_12_diags.pdf}
+\caption{erai diags-12 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_12_tracks.pdf}
+\caption{erai tracks-12 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_13_diags.pdf}
+\caption{erai diags-13 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_13_tracks.pdf}
+\caption{erai tracks-13 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_14_diags.pdf}
+\caption{erai diags-14 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_14_tracks.pdf}
+\caption{erai tracks-14 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_15_diags.pdf}
+\caption{erai diags-15 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_15_tracks.pdf}
+\caption{erai tracks-15 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_16_diags.pdf}
+\caption{erai diags-16 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_16_tracks.pdf}
+\caption{erai tracks-16 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_17_diags.pdf}
+\caption{erai diags-17 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_17_tracks.pdf}
+\caption{erai tracks-17 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_18_diags.pdf}
+\caption{erai diags-18 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_18_tracks.pdf}
+\caption{erai tracks-18 1995-2005}
+\end{minipage}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_19_diags.pdf}
+\caption{erai diags-19 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_19_tracks.pdf}
+\caption{erai tracks-19 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_20_diags.pdf}
+\caption{erai diags-20 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_20_tracks.pdf}
+\caption{erai tracks-20 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_21_diags.pdf}
+\caption{erai diags-21 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_21_tracks.pdf}
+\caption{erai tracks-21 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_22_diags.pdf}
+\caption{erai diags-22 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_22_tracks.pdf}
+\caption{erai tracks-22 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_23_diags.pdf}
+\caption{erai diags-23 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_23_tracks.pdf}
+\caption{erai tracks-23 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_24_diags.pdf}
+\caption{erai diags-24 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_24_tracks.pdf}
+\caption{erai tracks-24 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_25_diags.pdf}
+\caption{erai diags-25 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_25_tracks.pdf}
+\caption{erai tracks-25 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_26_diags.pdf}
+\caption{erai diags-26 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_26_tracks.pdf}
+\caption{erai tracks-26 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_27_diags.pdf}
+\caption{erai diags-27 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_27_tracks.pdf}
+\caption{erai tracks-27 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_28_diags.pdf}
+\caption{erai diags-28 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_28_tracks.pdf}
+\caption{erai tracks-28 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_29_diags.pdf}
+\caption{erai diags-29 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_29_tracks.pdf}
+\caption{erai tracks-29 1995-2005}
+\end{minipage}
+\end{figure}
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_30_diags.pdf}
+\caption{erai diags-30 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_30_tracks.pdf}
+\caption{erai tracks-30 1995-2005}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[!tbp]
+\centering
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_31_diags.pdf}
+\caption{erai diags-31 1995-2005}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.45\textwidth}
+\includegraphics[width=\textwidth]{/glade/u/home/bbenton/scratch/20XXWRF/RUNWORKFLOW/writeup/figures/erai_1995_2005_31_tracks.pdf}
+\caption{erai tracks-31 1995-2005}
+\end{minipage}
+\end{figure}
+
+\end{document}

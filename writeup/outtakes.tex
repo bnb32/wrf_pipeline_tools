@@ -1,0 +1,366 @@
+
+We employed both a control and forced GCM simulation to overcome the
+limits of relying on historical hurricane records and to separate
+natural variability from forced behavior. As previously mentioned, the
+effect of aerosol forcing from volcanic eruptions on hurricane
+statistics is our primary focus. Both the forced and control
+simulations are dynamically downscaled using the Weather Research and
+Forecasting model (WRF) \cite{wrf_tech} and TCs are detected in the
+downscaled results using the Geophysical Fluid Dynamics Laboratory
+(GFDL) TC tracking algorithm (TSTORMS). A suite of diagnostics are
+used to assess the spatial and temporal statistics of hurricanes, as
+well as to calculate their tracks and extract trends. ERA-Interim
+(ERAI) reanalysis data is also downscaled and compared to
+International Best Track Archive for Climate Stewardship (IBTrACS)
+data to assess accuracy of WRF downscaling and set an uncertainty
+baseline.
+
+
+We were able to use this dataset in the same way we used GCM data from
+the LME runs. This allowed us to generate hurricane statistics based
+on observational climate data. IBTrACS provides observational data for
+hurricanes for roughly the same time period as ERAI. Thus, comparing
+the downscaled ERAI results to hurricane tracks and intensities from
+IBTrACS allowed us to evaluate the accuracy of our approach. Due to
+the inherently chaotic nature of hurricane genesis exact agreement
+between ERAI and IBTrACS was not expected. Assessing our approach was
+the primary objective in comparing ERAI with IBTrACS. ERAI data has
+resolution on the order of one degree which limits the ability to
+match individual hurricanes through downscaling. We expected ERAI to
+capture the observational record for mean climate. This should provide
+good agreement between downscaled results and overall hurricane
+
+
+\section{Data and Methods}
+\label{methods}
+
+\subsubsection{Dynamical Downscaling with WRF}
+\label{WRF}
+
+As previously mentioned, GCMs are used to generate boundary conditons
+for RCMs. In this work we used WRF, which is an open-source RCM and is
+continuously updated based on developments in mesoscale modelling. WRF
+has a well documented and extensive suite of physics parameterization
+schemes. This extensive suite provides options suitable for studying
+hurricane behavior.
+
+
+To prepare data from the LME runs as boundary conditions for WRF, we
+employed the procedure and software described in \cite{tech_notes}.
+
+We used a WRF domain extending from $130W$ to $15E$ and from the equator to $55N$. This domain allowed tracking of TCs throughout the North Atlantic and after making landfall on the North American Continent. The spatial resolution used in WRF was $30km$. We used adaptive time stepping with a maximum temporal resolution of $240s$.
+\par
+All dynamical downscaling with WRF was done using the Cheyenne supercomputer built by NCAR. The GCM data was used in parallel WRF simulations using 256 cores at a time. Each downscaling run used approximately 1,500 core hours with pre and post-processing bringing the total to around 2,000. A total of nearly one million core hours were used to complete all the computational work for this project.  
+
+\begin{table}[!tbp]
+\centering
+\begin{tabular}{lrrr}
+\toprule
+             Physics Schemes &  Name & Parameter & Value \\ 
+\midrule
+            (1) Micro-physics &     WSM6 &  mp\_physics & 6 \\  
+            (2) PBL &    YSU &  bl\_pbl\_physics &  1 \\    
+            (3) Convection &   Kain-Fritsch &  cu\_physics & 1 \\    
+            (4) Long-wave radiation &    RRTMG &   ra\_lw\_physics & 4 \\    
+            (5) Short-wave radiation &    RRTMG &   ra\_sw\_physics & 4 \\    
+            (6) Land surface &   Noah &   sf\_surface\_physics & 2 \\    
+            (7) Surface layer &    MM5 &  sf\_sfclay\_physics &  1 \\    
+            (8) Ocean &    Mixed-layer &  sf\_ocean\_physics &  1 \\    
+\bottomrule
+\end{tabular}
+\caption{WRF Physics Schemes}
+\label{wrf_specs}
+\end{table}
+
+\subsubsection{Tracking Tropical Cyclones with TSTORMS}
+\label{tstorms}
+We used the GFDL developed TSTORMS \cite{tc_algo} TC tracking routine to analyze the results of downscaling. This routine uses minimum pressure and maximum vorticity criteria to identify cyclones. The cyclones are then stored as storms if they satisfy the following conditions for a threshold number of days ($n_{days}$): (1) That the maximum vorticity location is within a threshold radius ($r_{crit}$) of the minimum pressure location, (2) that the core temperature of the cyclone is higher than outside of the core by a threshold difference ($twc_{crit}$) and (3) the difference in vertical distance between pressure levels at $200hPa$ and $1000hPa$ outside and inside the core exceeds a threshold value ($thick_{crit}$). As described in \cite{kerry_clivar} and \cite{tc_algo}, tracking results are sensitive to the particular tracking scheme and threshold values used. However, the latter is responsible for the main difference in tracking scheme results \cite{tc_track}. 
+\par
+To identify sensitivity to threshold values, we conducted a limited parameter sweep to determine optimal threshold values. We calculated the difference between ERAI downscaled output and IBTrACS data, for each set of parameters, using the diagnostics described in section \ref{diags}. We used the set of parameters that achieved the minimum difference of ${\sim}13.5\%$. This parameter set was $r_{crit} = 1.5^{\circ}$, $twc_{crit} = 1.0^{\circ}C$, $thick_{crit} = 50m$, and $n_{days} = 2$.  
+\subsubsection{Diagnostics}
+\label{diags}
+We estimated a suite of diagnostics to analyze TC tracking data from
+TSTORMS. These diagnostics consist of storm number vs (1) month, (2)
+year, (3) latitude, (4) longitude, (5) maximum wind speed, (6) minimum
+pressure, (7) decay time from maximum wind speed, and (8) decay time
+from minimum pressure. Additionally, we calculated percentage of
+storms within (9) May to November, (10) $0-25N$ latitude, (11)
+$100W-50W$ longitude, (12) $1020hPa-980hPa$ pressure, (13)
+$0m/s-40m/s$ maximum wind speed, (14) $0-100hrs$ decay time from
+maximum wind speed, and (15) $0-100hrs$ decay time from minimum
+pressure. Mean values of the storm number diagnostics and percentage
+values were used to calculate percentage differences and these
+differences were averaged over all diagnostics for a composite
+percentage difference. We refer to the mean difference of diagnostics
+1-8 as the total average difference and the mean difference of
+diagnostics 9-15 as the total percentage difference.  When used
+initially to assess our methodology these percentage differences were
+calculated for ERAI vs. IBTrACS, as described in sections
+\ref{tstorms} and \ref{erai}.
+\par
+The diagnostics described above were used as test statistics to evaluate whether volcanic eruptions have a measurable effect on hurricane behavior. These diagnostics were selected in order to assess hurricane behavior across a broad range of characteristics. The diagnostics not only quantify hurricane behavior across the temporal and spatial domain, but also assess more fundamental physical characteristics. In addition, the diagnostics can be used with limited data consisting only of time, location, wind speed, and surface pressure. This presents a versatile and efficient approach to capture both mean climatology and more fine structured hurricane behavior. 
+\par
+To determine whether volcanic eruptions effect hurricane statistics, we performed two-sample KS-tests for distributions of each of the diagnostics. The two samples tested for each diagnostic came from downscaled $LME_{control}$ and $LME_{forced}$ data. Since $LME_{control}$ does not include volcanic eruptions, agreement with $LME_{control}$ is confirmation of the null hypothesis.   
+
+\subsubsection{Case Studies}
+\label{cases}
+In this section we present some limited case studies of two few well known hurricanes: (1) Mitch (1998) and (2) Katrina (2005). As previously mentioned, we did not expect the downscaled ERAI to perfectly match IBTrACS. This is due to the inherently chaotic nature of hurricanes, the native resolution of ERAI, and systematic under-estimation of intensities by WRF. However, by increasing the resolution of the WRF simulations we can roughly match some individual hurricanes. Instead of the $30 km$ resolution used for the rest of the downscaled simulations, here we use $10 km$. This significantly increases the computational overhead but allows us to better identify TCs. We handled this constraint by reducing the domain to $100 W$-$20 W$ and $5 N$-$45 N$. We also only simulated the month containing the storm of interest, rather than the entire year. All physics schemes were kept the same as previously described. 
+
+\myparagraph{Hurricane Mitch}
+Hurricane Mitch is the second deadliest Atlantic hurricane in recorded history, responsible for over 11,000 deaths in Central America alone due to rain-induced flooding \cite{hellin}.  After forming in the southwestern Caribbean Sea on 22 October 1998, Mitch strengthened into a Category 5 hurricane, attaining a minimum pressure of 905 mb, which is the eighth lowest pressure ever recorded in the Atlantic Hurricane Basin \cite{pasch}.  Mitch turned southward and slowly weakened before making landfall as a minimal hurricane in Honduras.  The nearly stationary movement of the hurricane (4 kt for a week) pulled moisture from the Pacific Ocean and Caribbean into the mountains of Honduras and Nicaragua, resulting in daily rainfalls of over one foot due to orographic lift.  A peak storm total of 75 in. was estimated from satellite-derived methods \cite{hellin}.  After the center of the remnant low emerged over the Gulf of Mexico, it regained tropical storm strengthand made landfall in Florida on October 5 \cite{pasch}.  Mitch accelerated northeast,underwent extra-tropical transition, and dissipated.
+\par
+The results from downscaling ERAI at 10 km are shown in figure \ref{mitch_tracks} (A) and IBTrACS is shown in figure \ref{mitch_tracks} (B). TSTORMS detects Mitch in the 10 km downscaled ERAI output on October 21, 1998. However, TSTORMS only resolves Mitch until October 25, 1998. We see from the figures that the location of genesis is in good agreeent with IBTrACS but the intensity is underestimated. This is likely why the track is observed to end on October 24. To contrast we show the closest candidate for Mitch from downscaling with 30 km resolution in figure \ref{mitch_tracks} (C). TSTORMS resolved this storm from October 23 to October 25. We see a difference in location as well as intensity variation over the track.  
+
+
+\subsection{Data}
+\subsubsection{LME}
+We used two simulations from the National Center for Atmospheric Research (NCAR) Last Millennium Ensemble (LME) runs, described in \cite{gcm_lme}. These experiments consist of a control and a forced run, allowing us to assess internal variability as well as the effect of various forcings on hurricane statistics.
+
+
+
+The selected runs will be referred to as $LME_{control}$ and $LME_{forced}$.
+
+
+
+\subsubsection{ERAI and IBTRACS}
+\label{erai}
+We used ERAI and IBTrACS to construct a baseline accuracy and calibration for the downscaling and storm tracking pipeline.
+
+
+
+statistics seen in IBTrACS.
+\par
+
+
+
+\par
+In ref. \cite{hodges2017well}, the authors assess how well TCs are represented in reanalysis products. This work used two TC-track matching approaches, referred to as (1) ``direct matching" and (2) ``objective matching". The authors further used several diagnostics in order to compare reanalysis TC tracks to those found in IBTrACS. The objective matching approach, which employs a tracking algorithm similar to TSTORMS, found an agreement of ${\sim}60\%$ with ERAI in the Northern Hemisphere. This agreement also highlights the objective in our own comparison. Exact agreement was not expected, rather the goal was to ensure proper execution of all the computational elements involved in our methodology. 
+\subsection{Methods}
+\subsubsection{Potential Intensity}
+In addition to downscaling, we use the original CESM data to compute potential intensity (PI) fields. This gives us insight into the theoretical effect of eruptions on hurricanes, without the computational overhead of downscaling. Following the thermodynamic analysis in \cite{pi_ke}, we use Equation (\ref{PI_eqn}) to calculate PI:
+
+\begin{equation}
+{V_m} \propto \sqrt{\frac{T_s-T_{o}}{T_{o}}(k^{*}-k)},
+\label{PI_eqn}
+\end{equation}
+
+where \ref{PI_eqn} $V_m$ is the maximum tangential wind speed, $T_s$ is the temperature at the ocean surface, $T_o$ is the outflow temperature at the top of the troposphere, and $k^{*}-k$ is the enthalpy flux (or latent heat flux) at the sea-air interface. The enthalpy flux is given by $c_p(T_{SST}-T_{air})+L(q^{*}-q)$, where $c_p$ is the specific heat capacity at constant pressure, $T_{SST}$ is the sea surface temperature, $T_{air}$ is the temperature of air at the surface, $L$ is the latent heat of vaporization, $q^{*}$ is the saturated specific humidity at the surface, and $q$ is the specific humidity of air at the surface. We are only interested in the fractional difference given by Equation (\ref{dpi}), so we are unconcerned with additional scaling factors.
+
+\begin{equation}
+\delta PI = \frac{{V_{m}}^{LME_{forced}}}{{V_{m}}^{LME_{control}}}-1
+\label{dpi}
+\end{equation}
+
+
+
+\begin{figure}[!tbp]
+\centering
+%\begin{minipage}[b]{0.45\textwidth}
+%\includegraphics[width=\textwidth]{./figures/Hurricane_Mitch_tracks.eps}
+\caption{Hurricane Mitch: (A) ERAI 10 km, (B) IBTRACS, (C) ERAI 30 km}
+\label{mitch_tracks}
+\end{figure}
+
+\myparagraph{Hurricane Katrina}
+Hurricane Katrina is one of the deadliest Atlantic hurricanes and the costliest hurricane in United States history \cite{beven}.  Katrina developed over the central Bahamas on 24 August 2005 and strengthened into a Category 1 hurricane before making landfall in southern Florida.  After briefly weakening to a tropical storm, Katrina strengthened once over the Gulf of Mexico and underwent an eye replacement cycle that doubled the size of the tropical wind field.  A newly defined eyewall developed and the storm underwent rapid intensification, with peak winds reaching 150 kt \cite{beven}.  Katrina made landfall in southeastern Louisiana on 29 August.  Its large wind field drove a storm surge into Mississippi, Alabama, and Lake Pontchartrain, with the latter infamously breaking the levees in New Orleans, leading to widespread destruction and casualties.  Katrina dissipated and was absorbed by a frontal zone as it moved from the Southeast to the Northeast US.
+\par
+The results from downscaling ERAI are shown in figure \ref{katrina_tracks} (A) and IBTrACS is shown in figure \ref{katrina_tracks} (B). TSTORMS detected Katrina on August 21, 2005 and the track ended August 29, 2005. We see from the figures that again the location is in reasonably good agreement with IBTrACS and the intensity is also in close agreement. To contrast we show the closest candidate for Katrina using $30km$ resolution in figure \ref{katrina_tracks} (C). TSTORMS tracked this storm from September 1, 2005 to September 3, 2005. Not only is the date significantly divergent but the location is as well. Finally, we see huge degradation in the intensity profile as compared to that from $10km$ resolution.    
+
+\begin{figure}[!tbp]
+\centering
+%\begin{minipage}[b]{0.45\textwidth}
+%\includegraphics[width=\textwidth]{./figures/Hurricane_Katrina_tracks.eps}
+\caption{Hurricane Katrina: (A) ERAI 10 km, (B) IBTRACS, (C) ERAI 30 km}
+\label{katrina_tracks}
+\end{figure}
+
+
+----older----
+
+The response of hurricane statistics to changes in climate depends on the specifics of
+external climate forcings. These forcings in turn depend on a
+combination of many separate factors. For instance, increased aerosols
+and increased greenhouse gases (GHGs) in the atmosphere can have
+competing effects on sea surface and land surface air temperatures,
+which might produce different hurricane statistics. While aerosols
+commonly reduce net surface radiation by increasing planetary albedo,
+thereby reducing surface temperatures, GHGs have a warming effect by
+trapping upwelling long-wave radiation \cite{ipcc_2007}. To better
+understand the overall effect of various forcings on hurricane
+statistics, it is necessary to analyze their effects separately.
+
+
+Volcanic eruptions are significant sources of aerosols, thus studying
+eruptions provides insight into how aerosol forcing affects
+hurricanes. How aerosols affect hurricanes has significant bearing on
+a number of important questions. These questions range from how
+pollution might affect hurricanes, to how to approach adaptation
+challenges. Because of the corresponding reduction in insolation from
+aerosols, studying eruptions could provide key insights into solar
+geoengineering (SG) risks with respect to hurricane development. It is
+well known that SG through stratospheric aerosol injection counteracts
+climate warming (\cite{wigley},\cite{crutzen}) through the same
+forcings as volcanic eruptions.
+
+
+Recently, 
+
+
+ first, storm surges
+will likely do more damage than today because sea levels will be
+higher; second, future storms are expected to be wetter, in part due
+to increases in water vapor content driven by a warmer atmosphere
+
+the number and intensity of the strongest storms is
+likely to increase from warmer surface temperatures; second,
+
+; and third,.
+
+it also presents some advantages, such as evaluating simulated or
+modeled output. Historical records provide an accurate picture of
+hurricanes over the past few decades and allow us to evaluate the
+accuracy of predictive models. With the currently available
+observational information, on hurricane intensity and their tracks, we
+can assess the efficacy of our general methodology.
+
+Long-term historical records are one possible way to understand
+responses in hurricane statistics to changes in climate, including
+those related to major volcanic eruptions. However, these long-term
+historical records of hurricanes do not exist. The techonological
+framework by which hurricanes are observed today was only recently
+established, mostly with the advent of the satellite era. Prior to
+this, frequent changes in detection and tracking instrumentation have
+created systematic biases in the historical record that are difficult
+to correct. Accounting for the lack of aerial observation capability
+prior the last few decades presents a significant challenge
+\cite{kerry_clivar}. Thus, historical records cannot currently support
+long-term trend analysis.
+
+Notwithstanding its small sample size of volcanic eruptions, the
+historical period can serve as a benchmark for evaluating downscaling
+methodologies to simulate hurricanes.
+
+
+----- 
+Studies utilizing models have also demonstrated changes in hurricane
+intensity and frequency as a result of SRM through stratospheric
+aerosol injection.
+
+
+A multi-model analysis of the Geoengineering Model
+Intercomparison Project (GeoMIP) found a marginally significant
+decrease in intensity and frequency of storm surge events associated
+with hurricanes compared to a non-SRM scenario \cite{atl_surge}.
+
+When
+employing a statistical-dynamical downscaling algorithm, TC frequency
+decreased significantly globally relative to RCP4.5 \cite{solar_geo}.
+
+When SRM was applied to only one hemisphere, the TC activity in that
+hemisphere decreased due to less convection and more wind shear
+\cite{solar_geo}, concurring with recent historical observations from
+volcanic eruptions and observed shifts of the ITCZ.
+
+Although a
+positive outcome from SRM in the northern hemisphere would decrease
+hurricane development, it could also lead to drought in the Sahel,
+which depends on the rainfall from the ITCZ.
+
+Although impacts from
+recent volcanic eruptions and SG on hurricane activity have been
+analyzed, more in-depth climate modeling of eruptions is lacking and
+provides a particularly rich area for exploration.
+
+
+
+a fully coupled GCM to drive dynamical
+downscaling, along with an analysis of the thermodynamic metric
+potential intensity, with a focus on the effect of volcanic eruptions
+on hurricane statistics over the last millennium. We also employ both
+a control and forced GCM dataset in order to separate natural climate
+from forced responses.
+
+
+ approach has been applied
+to evaluate hurricane statistics in extreme climates, it has not been
+employed to evaluate the relationship between volcanic activity and
+hurricanes in simulations of the past millennium. 
+
+with increased carbon dioxide
+concentrations in the atmosphere.
+
+
+
+GCM data to
+simulate hurricanes. For example, in ref. \cite{} a
+is used to
+downscale .
+
+
+which uses
+
+a fully coupled GCM. The authors use a statistical downscaling method
+and analyze the decadal and multi-decadal variability of land-falling
+hurricanes. Furthermore, in ref. \cite{down_21st_gv}the authors focus
+on downscaling 21st century climate conditions. Our work differs from
+these experiments
+
+
+(typically
+50-200km nominal horizonal resolution) generation of models.
+
+
+Modeling the relationship between climate forcing and the statistical
+characteristics of hurricanes 
+
+response of hurricane behavior to climate changes has
+been explored extensively. Both global and regional climate models
+(GCMs and RCMs, respectively) have been used in this context. However,
+due to the low horizontal resolution of most GCMs (on the order of
+50-100 km in the CMIP5 generation of models), hurricane statistics
+cannot be simulated appropriately. Adjusting the resolution of GCMs to
+capture hurricane statistics is much too computationally expensive.
+
+
+
+A simple approach is to evaluate the
+\textit{implied} (as opposed to simulated) responses of Hurricanes and
+TCs to external climate forcings by calculating thermodynamic indices
+
+
+
+and their link
+to TC development \cite{wang}.
+
+Thermodynamics metrics include
+
+potential intensity (PI),
+
+Such quantities include genesis potential indes
+\cite{ke_nolan}, and ventilation index \cite{tang}.
+
+
+calculate an index of
+\textit{potential intensity} without resolving the storms themselves,
+and use this index to
+
+infer the implied resp
+forcing and hurricanes.
+
+
+
+In
+the past,
+
+
+Much of the
+modelling effort so far has focused primarily on dynamical or
+statistical downscalling of current climate conditions for use in RCMs
+to assess hurricane statistics
+(\cite{kerry_clivar},\cite{down_method_ke}). A major limitation of
+this approach is the difficulty of separating natural climate
+variability from forced responses.
+
+
+There has been significant interest in downscaling
+

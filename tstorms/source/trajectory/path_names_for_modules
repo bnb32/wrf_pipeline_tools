@@ -1,0 +1,30 @@
+if ( `uname` == Linux ) then
+#   set DEFAULT_COMPILE = 'pgf90 -c '
+#   set FINAL_COMMAND   = 'pgf90 *.o -o $1.exl '
+
+#   set DEFAULT_COMPILE = '/opt/intel/fce/9.0/bin/ifort -c'
+#   set FINAL_COMMAND   = '/opt/intel/fce/9.0/bin/ifort *.o -o $1.exe '
+
+#    set DEFAULT_COMPILE = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/mpi/ifort -c'
+    set DEFAULT_COMPILE = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/ifort -c -g'
+#    set FINAL_COMMAND   = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/mpi/ifort *.o -o $1.exe '
+    set FINAL_COMMAND   = '/glade/u/apps/ch/opt/ncarcompilers/0.4.1/ifort *.o -o $1.exe '
+
+else
+   set DEFAULT_COMPILE = 'f90 -c'
+   set FINAL_COMMAND   = 'f90 *.o -o $1.exe'
+endif
+
+#LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+# set ANAL_PATH = /home/jjs/tstorms_wehner/source/trajectory
+# set ANAL_PATH = /d/visusers/romano/src/tstorms_wehner/source/trajectory
+  set ANAL_PATH = /glade/u/home/bbenton/RUNWORKFLOW/tstorms/source/trajectory
+#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+# MOVE or RENAME trajectory_rr.o or trajectory.o before compiling
+
+#set TRAJECTORY  =  $ANAL_PATH/trajectory_orig.f90	# original code
+set TRAJECTORY  =  $ANAL_PATH/trajectory.f90		# modified to output columns with fraction of time
+							# steps meeting thickness and warm core criteria 
+set TS_TOOLS    =  $ANAL_PATH/ts_tools.f90
+
