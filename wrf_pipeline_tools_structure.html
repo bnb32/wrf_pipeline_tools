@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ecrlgcm’ Code Structure &mdash; ecrlgcm dev documentation</title>
+  <title>wrf_pipeline_tools’ Code Structure &mdash; wrf_pipeline_tools dev documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="shortcut icon" href="_static/favicon.ico"/>
@@ -27,7 +27,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> ecrlgcm
+            <a href="index.html" class="icon icon-home"> wrf_pipeline_tools
           </a>
               <div class="version">
                 dev
@@ -51,7 +51,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">ecrlgcm</a>
+          <a href="index.html">wrf_pipeline_tools</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -59,7 +59,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>ecrlgcm Code Structure</li>
+      <li>wrf_pipeline_tools Code Structure</li>
   </ul>
   <hr/>
 </div>
@@ -90,27 +90,27 @@
     text-align: unset;
 }
 </style>
-<section id="ecrlgcm-s-code-structure">
-<h1>Code Structure<a class="headerlink" href="#ecrlgcm-s-code-structure" title="Permalink to this headline"></a></h1>
-<p>This page briefly describes the ecrlgcm main components.</p>
+<section id="wrf_pipeline_tools-s-code-structure">
+<h1>Code Structure<a class="headerlink" href="#wrf_pipeline_tools-s-code-structure" title="Permalink to this headline"></a></h1>
+<p>This page briefly describes the wrf_pipeline_tools main components.</p>
 <section id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline"></a></h2>
-<p><code>ecrlgcm/preprocessing/__init__.py</code> contains functions to remap continents and compute initial conditions.</p>
+<p><code>wrf_pipeline_tools/preprocessing/__init__.py</code> contains functions to remap continents and compute initial conditions.</p>
 </section>
 
 <section id="postprocessing">
 <h2>Postprocessing<a class="headerlink" href="#postprocessing" title="Permalink to this headline"></a></h2>
-<p><code>ecrlgcm/postprocessing/__init__.py</code> contains functions used in the interactive dashboard and creating gifs.<br>
-To run the interactive dashboard use <code>python ecrlgcm/postprocessing/app.py</code>.<br>
-To generate gifs use <code>ecrlgcm/postprocessing/get_animation.py</code>.<br>
-To generate an html file with an interactive globe use <code>ecrlgcm/postprocessing/get_interactive_globe.py</code>.
+<p><code>wrf_pipeline_tools/postprocessing/__init__.py</code> contains functions used in the interactive dashboard and creating gifs.<br>
+To run the interactive dashboard use <code>python wrf_pipeline_tools/postprocessing/app.py</code>.<br>
+To generate gifs use <code>wrf_pipeline_tools/postprocessing/get_animation.py</code>.<br>
+To generate an html file with an interactive globe use <code>wrf_pipeline_tools/postprocessing/get_interactive_globe.py</code>.
 </p>
 </section>
 
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline"></a></h2>
 <p>
-<code>ecrlgcm/data/</code> contains historical data on CO2 and orbital parameters.
+<code>wrf_pipeline_tools/data/</code> contains historical data on CO2 and orbital parameters.
 </p>
 </section>
 
