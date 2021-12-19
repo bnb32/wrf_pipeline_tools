@@ -31,9 +31,9 @@
  set ZTOOLS         =  $ANAL_PATH/ztools.f90
 
 # --- auxillary modules
- set GET_DATE       =  $ANAL_PATH/aux/get_date.f90
- set UTILITIES      =  $ANAL_PATH/aux/utilities.f90
- set TIME_MANAGER   =  $ANAL_PATH/aux/time_manager.f90
+ set GET_DATE       =  $ANAL_PATH/auxiliary/get_date.f90
+ set UTILITIES      =  $ANAL_PATH/auxiliary/utilities.f90
+ set TIME_MANAGER   =  $ANAL_PATH/auxiliary/time_manager.f90
 
 # --- netcdf modules
  set NCATT         = $ANAL_PATH/netcdf/ncatt.f90
