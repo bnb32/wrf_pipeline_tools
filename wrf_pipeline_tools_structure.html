@@ -95,29 +95,46 @@
 <p>This page briefly describes the wrf_pipeline_tools main components.</p>
 <section id="preprocessing">
 <h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline"></a></h2>
-<p><code>wrf_pipeline_tools/preprocessing/__init__.py</code> contains functions to remap continents and compute initial conditions.</p>
+<p>
+<code>run_wrf_pre_pipeline.sh</code> calls minor scripts to do all preprocessing 
+needed before running WPS. The main script called by <code>run_wrf_pre_pipeline.py</code> is the ncl conversion
+script to write out intermediate WPS files. This script also performs checks for
+whether cesm data is needed from HPSS, whether the cesm data has been converted into
+the format needed for WPS intermediate conversion, and whether WPS intermediate 
+data has already been written. This script takes an argument &lt;nrun&gt; which
+allows WRF intermediate conversion to be run in parallel. The WPS intermediate
+conversion is submitted to the queue on cheyenne.
+</p>
 </section>
 
 <section id="postprocessing">
 <h2>Postprocessing<a class="headerlink" href="#postprocessing" title="Permalink to this headline"></a></h2>
-<p><code>wrf_pipeline_tools/postprocessing/__init__.py</code> contains functions used in the interactive dashboard and creating gifs.<br>
-To run the interactive dashboard use <code>python wrf_pipeline_tools/postprocessing/app.py</code>.<br>
-To generate gifs use <code>wrf_pipeline_tools/postprocessing/get_animation.py</code>.<br>
-To generate an html file with an interactive globe use <code>wrf_pipeline_tools/postprocessing/get_interactive_globe.py</code>.
-</p>
-</section>
-
-<section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline"></a></h2>
 <p>
-<code>wrf_pipeline_tools/data/</code> contains historical data on CO2 and orbital parameters.
+<code>run_wrf_diag_pipeline.sh</code> calls all diagnostics oriented routines. 
+This includes running TSTORMS, plotting output, appending new figures to <code>diagnostics.tex</code>, compiling the tex file, and uploading to google drive.
 </p>
 </section>
 
 <section id="simulation">
 <h2>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline"></a></h2>
 <p>
-<code>scripts/run_cesm.py</code> and <code>scripts/run_isca.py</code> are used to run simulations.
+
+<p>
+<code>run_wrf_pipeline.sh</code> calls <code>run_wrf_pre_pipeline.py</code> and <code>run_wrf_batch.py</code> and runs the entire pipeline
+from fetching cesm data from HPSS to converting cesm data to intermediate
+format for WPS, to running WRF, and to extracting only the needed fields 
+from WRF output for storm tracking and drought analysis. This script takes an
+argument &lt;stride&gt; which selects how many parallel WRF sims to run. 
+This script also includes all immediate post-processing routines on WRF output before sending to TSTORMS.
+</p>
+
+<p>
+<code>run_wrf_batch.py</code> runs the entire WPS/WRF routine, including geogrid, metgrid,
+real, and wrf. This script uses the templates seen in batch_templates to submit
+jobs through PBS to cheyenne and setup namelists. These templates are edited upon 
+running and copied into the required directories. This script also takes an 
+argument &lt;nrun&gt; so that multiple WRF runs can happen simultaneously. On running 
+WPS_nrun and WRF_nrun are created and routines are run from those directories.
 </p>
 </section>
 </section>
