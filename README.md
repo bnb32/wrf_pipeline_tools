@@ -36,3 +36,5 @@ You need to have the following nc files in an "Invariant_Data" directory:
 (1) "/gpfs/fs1/p/cesmdata/cseg/ncl/map_gx1v6_to_fv1.9x2.5_bilin_da_090296.nc"
 (2) "/gpfs/fs1/p/cesmdata/cseg/inputdata/lnd/clm2/griddata/fracdata_1.9x2.5_gx1v6_c090206.nc"
 (3) "/gpfs/fs1/p/cesmdata/cseg/inputdata/atm/cam/topo/USGS-gtopo30_1.9x2.5_remap_c050602.nc"
+  
+Also need to have WRF and WPS directories in `${DIR_HOME}`.  
