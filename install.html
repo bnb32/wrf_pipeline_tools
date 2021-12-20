@@ -124,14 +124,18 @@ institutional clusters and doesn’t require root permissions.</p>
 <p>After the required packages are installed, wrf_pipeline_tools can be installed from source.</p>
 <section id="clone-from-github">
 <h2>Clone from Github<a class="headerlink" href="#clone-from-github" title="Permalink to this headline"></a></h2>
-<p>You can obtain it directly from the <a class="reference external" href="https://github.com/bnb32/gcm_aws">Github repo</a></p>
+<p>You can obtain it directly from the <a class="reference external" href="https://github.com/bnb32/wrf_pipeline_tools">Github repo</a></p>
 <div class="highlight-python3 notranslate"><div class="highlight">
-<pre><span></span><span class="n">git clone https://www.github.com/bnb32/gcm_aws.git </span>
-<span class="n">cd</span> <span class="n">gcm_aws</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
-<span class="n">bash</span> <span class="n">go.sh</span>
+<pre><span></span><span class="n">git clone https://www.github.com/bnb32/wrf_pipeline_tools.git </span>
 </pre></div>
 </div>
+<p>Edit environment variables in <code>pipeline_env_info.sh</code></p>
+<p>You need to have the following nc files in an <code>Invariant_Data</code> directory:<br>
+<code>/gpfs/fs1/p/cesmdata/cseg/ncl/map_gx1v6_to_fv1.9x2.5_bilin_da_090296.nc</code><br>
+<code>/gpfs/fs1/p/cesmdata/cseg/inputdata/lnd/clm2/griddata/fracdata_1.9x2.5_gx1v6_c090206.nc</code><br>
+<code>/gpfs/fs1/p/cesmdata/cseg/inputdata/atm/cam/topo/USGS-gtopo30_1.9x2.5_remap_c050602.nc</code><br>
+</p>
+<p>You also need to have WRF and WPS directories in the directory defined by<code>DIR_HOME</code>.</p>
 </section>
 
 
